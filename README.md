@@ -17,7 +17,7 @@ These instructions will help you start the full-stack app.
 ### Installing
 Run `docker-compose` command from the root of the project:
 ``` sh
-$ docker-compose up
+$ docker-compose up -d
 ```
 This command will spin up 3 services: *fe-shopping, be-shopping and router*.
 
