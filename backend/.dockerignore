@@ -1,0 +1,4 @@
+python-env
+resources/__pycache__
+config/__pycache__
+.dockerignore

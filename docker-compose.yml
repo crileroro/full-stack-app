@@ -1,0 +1,40 @@
+version: '3.7'
+services: 
+    fe_shopping:
+        build:
+            context: ./frontend/fe-shopping
+            dockerfile: ../Dockerfile.dev
+        container_name: client-react
+        image: crileroro/fe-shopping-react:node-14.0
+        tty: true
+        volumes:
+            - ./frontend/fe-shopping:/app
+            - /app/node_modules
+        
+    be_shopping:
+        build:
+            context: ./backend
+            dockerfile: Dockerfile
+        container_name: backend-flask-python
+        image: crileroro/be-shopping-python:python-3.9
+        environment: 
+            HOST: '0.0.0.0'
+            DEBUG: 'True'
+            PORT: 5000
+
+    router:
+        build:
+            context: ./router
+            dockerfile: Dockerfile
+        image: crileroro/router_nginx:alpine
+        restart: always
+        container_name: nginx_router
+        depends_on: 
+            - fe_shopping
+            - be_shopping
+        ports: 
+            - '3050:80'
+
+        
+        
+            

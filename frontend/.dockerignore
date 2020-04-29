@@ -1,0 +1,3 @@
+# Files created during npm run start/build
+./fe-shopping/node_modules
+./fe-shopping/build
