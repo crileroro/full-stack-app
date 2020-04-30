@@ -17,7 +17,7 @@ spec:
         spec:
             containers:
                 - name: be-shopping
-                  image: crileroro/be-shopping-python:ca9cc67
+                  image: crileroro/be-shopping-python
                   ports:
                     - containerPort: 5000
                   env:
