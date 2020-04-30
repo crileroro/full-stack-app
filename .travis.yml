@@ -13,9 +13,9 @@ script:
     - docker container run -e CI=true crileroro/fe-shopping-react npm run test -- --coverage
 
 after_success:
-    - docker image build -t crileroro/be-shopping-python:"$SHA" -f backend/Dockerfile.dev ./backend
-    - docker image build -t crileroro/fe-shopping-react:"$SHA" -f frontend/Dockerfile.dev ./frontend/fe-shopping
-    - docker image build -t crileroro/router_nginx:"$SHA" -f router/Dockerfile.dev ./router
+    - docker image build -t crileroro/be-shopping-python:"$SHA" -t crileroro/be-shopping-python:latest -f backend/Dockerfile.dev ./backend
+    - docker image build -t crileroro/fe-shopping-react:"$SHA" -t crileroro/fe-shopping-react:latest -f frontend/Dockerfile.dev ./frontend/fe-shopping
+    - docker image build -t crileroro/router_nginx:"$SHA" -t crileroro/router_nginx:latest -f router/Dockerfile.dev ./router
     
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker push crileroro/be-shopping-python:$SHA
