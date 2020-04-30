@@ -11,4 +11,4 @@ api.add_resource(Item, '/item/<string:name>')
 api.add_resource(ItemList, '/items-all')
 
 if __name__ == "__main__":
-    app.run(host= env_host(), port=env_port(), debug=env_debug)
+    app.run(host= env_host(), port=env_port(), debug=env_debug())

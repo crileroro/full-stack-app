@@ -1,21 +1,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-    name: fe_deploy
+    name: be-deploy
     labels:
-        tier: react_frontend
+        tier: python_backend
 spec:
     replicas: 3
     selector:
         matchLabels:
-            tier: react_frontend
+            tier: python_backend
     template:
         metadata:
-            name: pod_react_fe
+            name: pod-react-fe
             labels:
-                tier: fe
+                tier: python_backend
         spec:
             containers:
-                - name: fe_shopping
-                  image: 
+                - name: be-shopping
+                  image: crileroro/be-shopping-python:ca9cc67
+                  ports:
+                    - containerPort: 5000
+                  env:
+                    - name: HOST
+                      value: '0.0.0.0'
+                    - name: PORT
+                      value: '5000'
+                    - name: DEBUG
+                      value: 'True'
     
