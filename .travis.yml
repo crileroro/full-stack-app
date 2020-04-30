@@ -21,3 +21,7 @@ after_success:
     - docker push crileroro/be-shopping-python:$SHA
     - docker push crileroro/fe-shopping-react:$SHA
     - docker push crileroro/router_nginx:$SHA
+
+    - docker push crileroro/be-shopping-python:latest
+    - docker push crileroro/fe-shopping-react:latest
+    - docker push crileroro/router_nginx:latest
