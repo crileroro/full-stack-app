@@ -1,0 +1,23 @@
+
+sudo: required
+env:
+    global:
+        - SHA=$(git rev-parse --short HEAD)
+services:
+    - docker
+
+before_install:
+    - docker image build -t crileroro/fe-shopping-react -f frontend/Dockerfile.dev ./frontend/fe-shopping
+
+script:
+    - docker container run -e CI=true crileroro/fe-shopping-react npm run test -- --coverage
+
+after_success:
+    -docker image build -t crileroro/be-shopping-python:"$SHA" -f backend/Dockerfile.dev ./backend
+    -docker image build -t crileroro/fe-shopping-react:"$SHA" -f frontend/Dockerfile.dev ./frontend/fe-shopping
+    -docker image build -t crileroro/router_nginx:"$SHA" -f router/Dockerfile.dev ./router
+    
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push crileroro/be-shopping-python:"$SHA"
+    - docker push crileroro/fe-shopping-react:"$SHA"
+    - docker push crileroro/router_nginx:"$SHA"

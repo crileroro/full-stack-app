@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: fe_deploy
+    labels:
+        tier: react_frontend
+spec:
+    replicas: 3
+    selector:
+        matchLabels:
+            tier: react_frontend
+    template:
+        metadata:
+            name: pod_react_fe
+            labels:
+                tier: fe
+        spec:
+            containers:
+                - name: fe_shopping
+                  image: 
+    
