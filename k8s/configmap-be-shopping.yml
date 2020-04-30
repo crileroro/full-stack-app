@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+    name: be-env-variables
+data:
+    HOST: '0.0.0.0'
+    DEBUG: 'True'
+    PORT: '5000'

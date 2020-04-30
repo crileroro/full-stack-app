@@ -20,11 +20,7 @@ spec:
                   image: crileroro/be-shopping-python
                   ports:
                     - containerPort: 5000
-                  env:
-                    - name: HOST
-                      value: '0.0.0.0'
-                    - name: PORT
-                      value: '5000'
-                    - name: DEBUG
-                      value: 'True'
+                  envFrom:
+                    - configMapRef:
+                        name: be-env-variables
     
