@@ -17,10 +17,8 @@ after_success:
     - docker image build -t crileroro/fe-shopping-react-prd:"$SHA" -t crileroro/fe-shopping-react-prd:latest -f frontend/Dockerfile ./frontend
     
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push crileroro/be-shopping-python:$SHA
-    - docker push crileroro/fe-shopping-react:$SHA
-    - docker push crileroro/router_nginx:$SHA
+    - docker push crileroro/be-shopping-python-prd:$SHA
+    - docker push crileroro/fe-shopping-react-prd:$SHA
 
-    - docker push crileroro/be-shopping-python:latest
-    - docker push crileroro/fe-shopping-react:latest
-    - docker push crileroro/router_nginx:latest
+    - docker push crileroro/be-shopping-python-prd:latest
+    - docker push crileroro/fe-shopping-react-prd:latest
