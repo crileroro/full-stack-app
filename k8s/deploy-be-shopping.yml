@@ -5,19 +5,19 @@ metadata:
     labels:
         tier: python_backend
 spec:
-    replicas: 3
+    replicas: 2
     selector:
         matchLabels:
-            tier: python_backend
+            run: python_backend
     template:
         metadata:
-            name: pod-react-fe
+            name: pod-python-be
             labels:
-                tier: python_backend
+                run: python_backend
         spec:
             containers:
                 - name: be-shopping
-                  image: crileroro/be-shopping-python
+                  image: crileroro/be-shopping-python-prd
                   ports:
                     - containerPort: 5000
                   envFrom:

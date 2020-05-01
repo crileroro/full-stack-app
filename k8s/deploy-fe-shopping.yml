@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: fe-deploy
+    labels:
+        tier: react_frontend
+spec:
+    replicas: 2
+    selector:
+        matchLabels:
+            run: react_frontend
+    template:
+        metadata:
+            name: pod-react-fe
+            labels:
+                run: react_frontend
+        spec:
+            containers:
+                - name: fe-shopping
+                  image: crileroro/fe-shopping-react-prd
+                  tty: true
+                  ports:
+                    - containerPort: 3000
