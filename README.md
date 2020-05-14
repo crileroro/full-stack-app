@@ -64,7 +64,12 @@ You can find all **k8s** object in the `./k8s` folder.
 + Minikube.
 + Kubectl.
 #### Installing
-Run the following command to create all k8s object defined in this project.
+First thing to do is enabling *ingress* in your k8s cluster. To enable it, run the following command:
+```sh
+$ minikube addons enable ingress
+````
+ 
+After that, run the following command to create all k8s object defined in this project.
 ```sh
 $ kubectl apply -f k8s/
 ```
