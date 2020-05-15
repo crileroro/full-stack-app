@@ -1,0 +1,28 @@
+backend:
+    name: 'backend-deployment'
+    replicas: 3
+    image: crileroro/be-shopping-python-prd
+    port: 5000
+
+frontend:
+    name: 'frontend-deployment'
+    replicas: 3
+    image: crileroro/fe-shopping-react-prd
+    port: 3000    
+
+serviceBackend:
+    name: be-cluster-ip-service
+
+serviceFrontend:
+    name: fe-cluster-ip-service
+    
+configMap:
+    name: be-env-variables
+
+ingress:
+    name: service-ingress
+    http:
+        path1: /?(.*)
+        path2: /api/?(.*)
+
+    

@@ -1,0 +1,13 @@
+apiVersion: v2
+
+name: full-stack-chart
+
+version: 1.0.0
+
+dependencies:
+    - name: nginx-ingress
+      version: 1.36.3
+      repository: https://kubernetes-charts.storage.googleapis.com/
+
+maintainers:
+    - name: 'Cristhian Roa'

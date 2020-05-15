@@ -63,26 +63,32 @@ You can find all **k8s** object in the `./k8s` folder.
 #### Prerequisites
 + Minikube.
 + Kubectl.
++ Helm
 #### Installing
-First thing to do is enabling *ingress* in your k8s cluster. To enable it, run the following command:
+
+1. You can use *Helm* to install the application in Minikube.
+```sh
+$ helm dependencies update fullstack
+```
+```sh
+$ helm install full-stack-app k8s/
+```
+This command will install the application along with ingress-nginx controller. 
+
+2. Enable *ingress* in your k8s cluster. To enable it, run the following command:
+
 ```sh
 $ minikube addons enable ingress
 ````
  
-After that, run the following command to create all k8s object defined in this project.
-```sh
-$ kubectl apply -f k8s/
-```
-It will create the following objects:
-+ fe deployment.
-+ be deployment.
-+ ClusterIP service for the fe.
-+ ClusterIP service for the be.
-+ configmap for the be.
-+ service ingress controlled based on the Ingress-Nginx.
-
 Obtain the IP of your Minikube cluster with the command `minikube ip`.
 You will be able to access the app directly from the browser by using the previous IP on port `80`.
+
+**IMPORTANT NOTE:** Helm chart has a ingress-nginx dependency. Minikube gives out of the box a configuration for *nginx-ingress* when running the command above. It means that in reality the chart dependency is not necessary as it will install again the ingress-nginx. It was only included to show that a *LoadBalancer* service type is created and the application can be accessed via the NodePort in this *LoadBalancer* service.
+```sh
+$ kubectl get svc test-nginx-ingress-controller -o yaml
+```
+Get the NodePort and access the application also from it.
 
 ### Google Cloud Platform | Google Kubernetes Engine
 The creation process of a new GCP project, activation of Google APIs, creation of service account and its private key as well as the creation of a new k8s cluster in GKE has been automated using the `Google-client-api-python` libraries. You can find this project [here](https://github.com/crileroro/GCP-GKE). 

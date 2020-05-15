@@ -1,0 +1,7 @@
+This Chart will deploy the following services:
+    + fe deployment.
+    + be deployment.
+    + ClusterIP service for the fe.
+    + ClusterIP service for the be.
+    + configmap for the be.
+    + service ingress based on the Ingress-Nginx.

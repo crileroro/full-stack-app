@@ -8,8 +8,13 @@ frontend/fe-shopping/build
 backend/python-env
 backend/**/__pycache__
 
-#IDE
+# IDE
 **/*vscode
+
+# Helm Charts
+**/*tgz
+**/*.lock
+
 
 
 
