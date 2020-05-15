@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: {{ .Values.frontend.name }}
+    labels:
+        tier: react_frontend
+spec:
+    replicas: {{ .Values.frontend.replicas }}
+    selector:
+        matchLabels:
+            run: react_frontend
+    template:
+        metadata:
+            name: pod-react-fe
+            labels:
+                run: react_frontend
+        spec:
+            containers:
+                - name: fe-shopping
+                  image: {{ .Values.frontend.image }}
+                  tty: true
+                  ports:
+                    - containerPort: {{ .Values.frontend.port }}

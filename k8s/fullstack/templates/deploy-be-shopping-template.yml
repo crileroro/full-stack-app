@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+    name: {{ .Values.backend.name }}
+    labels:
+        tier: python_backend
+spec:
+    replicas: {{ .Values.backend.replicas }}
+    selector:
+        matchLabels:
+            run: python_backend
+    template:
+        metadata:
+            name: pod-python-be
+            labels:
+                run: python_backend
+        spec:
+            containers:
+                - name: be-shopping
+                  image: {{ .Values.backend.image }}
+                  ports:
+                    - containerPort: {{ .Values.backend.port }}
+                  envFrom:
+                    - configMapRef:
+                        name: {{ .Values.configMap.name }}
+    
