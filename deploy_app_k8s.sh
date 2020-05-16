@@ -10,11 +10,11 @@ gcloud components update kubectl
 gcloud auth activate-service-account --key-file sa_service-account-k8s-cluster_privatekey.json
 
 # Set project and zone 
-gcloud config set project k8s-cluster-shoppingapp
+gcloud config set project k8s-cluster-shoppingapp1
 gcloud config set compute/zone europe-west2-a
 
 # Set Kubectl to point to our k8s cluster
-gcloud container clusters get-credentials multi-cluster-k8s-shoppingapp
+gcloud container clusters get-credentials multi-cluster-k8s-shoppingapp1
 
 
 
