@@ -9,32 +9,15 @@ services:
 
 before_install:
     # Build Docker image to test the app
-    - docker image build -t crileroro/fe-shopping-react -f frontend/Dockerfile.dev ./frontend/fe-shopping
-
-    # Decrypt service account file
-    - openssl aes-256-cbc -K $encrypted_0218e362b9d6_key -iv $encrypted_0218e362b9d6_iv -in sa_service-account-k8s-cluster_privatekey.json.enc -out sa_service-account-k8s-cluster_privatekey.json -d
-
-    # Configure gcloud
-    - curl https://sdk.cloud.google.com | bash > /dev/null
-    - source $HOME/google-cloud-sdk/path.bash.inc
-    - gcloud components update kubectl
-    
-    # Authorize access to GCP with a service account
-    - gcloud auth activate-service-account --key-file sa_service-account-k8s-cluster_privatekey.json
-    
-    # Set project and zone 
-    - gcloud config set project k8s-cluster-shoppingapp
-    - gcloud config set compute/zone europe-west2-a
-
-    # Set Kubectl to point to our k8s cluster
-    - gcloud container clusters get-credentials multi-cluster-k8s-shoppingapp
+    - docker image build -t crileroro/fe-shopping-react-tst:latest -f frontend/Dockerfile.dev ./frontend/fe-shopping
 
 script:
-    - docker container run -e CI=true crileroro/fe-shopping-react npm run test -- --coverage
+    - docker container run -e CI=true crileroro/fe-shopping-react-tst:latest npm run test -- --coverage
 
 after_success:
     # Login to Docker Hub
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    - docker push crileroro/fe-shopping-react-tst:latest
 
 deploy: 
     provider: script
