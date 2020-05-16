@@ -14,7 +14,7 @@ gcloud config set project k8s-cluster-shoppingapp1
 gcloud config set compute/zone europe-west2-a
 
 # Set Kubectl to point to our k8s cluster
-gcloud container clusters get-credentials multi-cluster-k8s-shoppingapp1
+gcloud container clusters get-credentials multi-cluster-k8s-shoppingapp
 
 
 
