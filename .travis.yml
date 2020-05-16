@@ -22,5 +22,6 @@ after_success:
 deploy: 
     provider: script
     script: bash ./deploy_app_k8s.sh
+    skip_cleanup: true
     on:
         branch: master
