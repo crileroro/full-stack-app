@@ -9,7 +9,7 @@ services:
 
 before_install:
     # Build Docker image to test the app
-    - docker image build -t crileroro/fe-shopping-react-tst -f frontend/Dockerfile.dev ./frontend/fe-shopping
+    - docker image build -t crileroro/fe-shopping-react-tst:latest -f frontend/Dockerfile.dev ./frontend/fe-shopping
 
 script:
     - docker container run -e CI=true crileroro/fe-shopping-react npm run test -- --coverage
