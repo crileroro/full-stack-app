@@ -17,11 +17,7 @@ script:
 after_success:
     # Login to Docker Hub
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push crileroro/fe-shopping-react-tst:latest
-
-deploy: 
-    provider: script
-    script: bash ./deploy_app_k8s.sh
-    skip_cleanup: true
-    on:
-        branch: master
+    - docker image build -t crileroro/be-shopping-python-prd:aws_alb -f backend/Dockerfile.dev ./backend
+    - docker image build -t crileroro/fe-shopping-react-prd:aws_alb -f frontend/Dockerfile ./frontend
+    - docker push crileroro/be-shopping-python-prd:aws_alb
+    - docker push crileroro/fe-shopping-react-prd:aws_alb
