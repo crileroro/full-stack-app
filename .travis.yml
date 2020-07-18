@@ -19,5 +19,5 @@ after_success:
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker image build -t crileroro/be-shopping-python-prd:aws_alb -f backend/Dockerfile.dev ./backend
     - docker image build -t crileroro/fe-shopping-react-prd:aws_alb -f frontend/Dockerfile ./frontend
-    - docker push crileroro/be-shopping-python-prd:$SHA-aws_alb
-    - docker push crileroro/fe-shopping-react-prd:$SHA-aws_alb
+    - docker push crileroro/be-shopping-python-prd:aws_alb_v1
+    - docker push crileroro/fe-shopping-react-prd:aws_alb_v1
