@@ -7,7 +7,7 @@ RUN npm install
 COPY ./fe-shopping .
 RUN npm run build
 
-FROM nginx:1.17.10-alpine
+FROM nginx:1.19-alpine
 EXPOSE 3000
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/build /usr/share/nginx/html
