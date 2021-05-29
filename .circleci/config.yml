@@ -1,5 +1,10 @@
 version: 2.1
 
+executors:
+  alpine:
+    docker: 
+      - image: alpine:3.12
+     
 commands:
   test:
     parameters:
@@ -11,25 +16,26 @@ commands:
           name: Echoing message test
           command: echo "Hello <<parameters.myparameter>>"
 
-jobs:
-  docker:
-      - image: alpine:3.12
-      
+jobs:   
   default:
+    executor: alpine
     steps:
       - test
       
   job-1:
+    executor: alpine
     steps:
       - test: 
           myparameter: "test-1"
           
   job-2:
+    executor: alpine
     steps:
       - test: 
           myparameter: "test-2"
   
   job-3:
+    executor: alpine
     steps:
       - test: 
           myparameter: "test-3"
