@@ -12,18 +12,26 @@ commands:
           command: echo "Hello <<parameters.myparameter>>"
 
 jobs:
+  default:
+    docker:
+      - image: alpine:3.12
+    steps:
+      - test
+      
   job-1:
     docker:
       - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-1"
+          
   job-2:
     docker:
       - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-2"
+  
   job-3:
     docker:
       - image: alpine:3.12
@@ -41,5 +49,5 @@ workflows:
   my-workflow-2:
     jobs:
       - job-3
-      - test
+      - default
 
