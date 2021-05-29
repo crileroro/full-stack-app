@@ -5,6 +5,6 @@ jobs:
     docker:
       - image: alpine:3.12
      
-     steps:
+    steps:
       - checkout
       - run: ls -la
