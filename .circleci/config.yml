@@ -1,7 +1,7 @@
 version: 2.1
 
 jobs:
-  build:
+  buildwd:
     docker:
       - image: alpine:3.12
      
