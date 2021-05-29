@@ -12,7 +12,7 @@ commands:
 jobs:
   my-job:
     docker:
-      - image: alpine:3.12
+      - image: cimg/base:stable
     steps:
       - test: 
           myparameter: "test-12345"
