@@ -10,15 +10,15 @@ commands:
       - run: echo "Hello <<parameters.myparameter>>"
 
 jobs:
-  my-job:
+  build:
     docker:
-      - image: cimg/base:stable
+      - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-12345"
           
-workflows:
-  my-workflow:
-    jobs:
-      - my-job
+# workflows:
+#   my-workflow:
+#     jobs:
+#       - my-job
           
