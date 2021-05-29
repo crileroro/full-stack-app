@@ -6,4 +6,5 @@ jobs:
       - image: alpine:3.12
      
     steps:
+      - checkout 
       - run: ls -la
