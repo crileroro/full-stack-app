@@ -1,10 +1,9 @@
 version: 2.1
 
 jobs:
-  build example:
+  build_example:
     docker:
       - image: alpine:3.12
      
     steps:
-      - checkout
       - run: ls -la
