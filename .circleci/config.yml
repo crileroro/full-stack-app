@@ -1,9 +1,19 @@
 version: 2.1
 
-jobs:
-  build:
-    docker:
-      - image: alpine:3.12
-     
+commands:
+  test:
+    parameters:
+      myparameter:
+        type: string
+        default: "crileroro"
     steps:
-      - run: ls -la
+      - run: echo "Hello <<parameters.myparameter>>"
+
+jobs:
+  my-job:
+    docker:
+      image: alpine:3.12
+    steps:
+      - test: 
+          myparameter: "test-12345"
+          
