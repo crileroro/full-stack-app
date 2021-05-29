@@ -10,7 +10,7 @@ commands:
       - run: echo "Hello <<parameters.myparameter>>"
 
 jobs:
-  build:
+  test:
     docker:
       - image: alpine:3.12
     steps:
