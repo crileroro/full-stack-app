@@ -41,4 +41,5 @@ workflows:
   my-workflow-2:
     jobs:
       - job-3
+      - test
 
