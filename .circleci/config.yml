@@ -12,29 +12,24 @@ commands:
           command: echo "Hello <<parameters.myparameter>>"
 
 jobs:
-  default:
-    docker:
+  docker:
       - image: alpine:3.12
+      
+  default:
     steps:
       - test
       
   job-1:
-    docker:
-      - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-1"
           
   job-2:
-    docker:
-      - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-2"
   
   job-3:
-    docker:
-      - image: alpine:3.12
     steps:
       - test: 
           myparameter: "test-3"
