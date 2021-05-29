@@ -35,7 +35,7 @@ workflows:
   my-workflow-1:
     jobs:
       - job-1
-      - job-2
+      - job-2:
           requires:
             - job-3
   my-workflow-2:
