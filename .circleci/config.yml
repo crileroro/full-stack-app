@@ -7,7 +7,9 @@ commands:
         type: string
         default: "crileroro"
     steps:
-      - run: echo "Hello <<parameters.myparameter>>"
+      - run: 
+          name: Echoing message test
+          command: echo "Hello <<parameters.myparameter>>"
 
 jobs:
   job-1:
@@ -34,6 +36,8 @@ workflows:
     jobs:
       - job-1
       - job-2
+          requires:
+            - job-3
   my-workflow-2:
     jobs:
       - job-3
