@@ -5,6 +5,11 @@ executors:
     docker: 
       - image: alpine:3.12
      
+parameters:
+  tag:
+    type: string
+    default: "<< parameter.number >>.0"
+    
 commands:
   test:
     parameters:
@@ -16,7 +21,12 @@ commands:
           name: Echoing message test
           command: echo "Hello <<parameters.myparameter>>"
 
-jobs:   
+jobs:  
+  version-tag:
+    executor: alpine
+    steps:
+      - run: echo "This is << parameters.tag >>"
+      - run: echo "This is << parameters.myparameter >>"
   default:
     executor: alpine
     steps:
