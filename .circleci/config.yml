@@ -25,8 +25,10 @@ jobs:
   version-tag:
     executor: alpine
     steps:
-      - run: echo "This is << parameters.tag >>"
-      - run: echo "This is << parameters.myparameter >>"
+      - run: 
+          name: echo tag
+          command: echo "This is << parameters.tag >>"
+
   default:
     executor: alpine
     steps:
