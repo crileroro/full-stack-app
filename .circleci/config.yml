@@ -25,7 +25,9 @@ jobs:
   version-tag:
     executor: alpine
     steps:
-      - test
+      - run:
+          name: test echo
+          command: echo hello
 
   default:
     executor: alpine
