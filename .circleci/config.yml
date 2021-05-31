@@ -8,7 +8,7 @@ executors:
 parameters:
   tag:
     type: string
-    default: "<< parameter.number >>.0"
+    default: "<< pipeline.number >>.0"
     
 commands:
   test:
@@ -27,7 +27,7 @@ jobs:
     steps:
       - run:
           name: test echo
-          command: echo hello
+          command: echo "This is the tag: <<parameters.tag>>"
 
   default:
     executor: alpine
