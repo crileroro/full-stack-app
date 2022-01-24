@@ -53,15 +53,16 @@ jobs:
           myparameter: "test-3"
          
 workflows:
-  my-workflow-1:
+  feature-flow:
     jobs:
-      - job-1
-      - job-2:
-          requires:
-            - job-1
-  my-workflow-2:
-    jobs:
-      - job-3
-      - default
-      - version-tag
+      - version-tag:
+          <<: *feature_filter
+      - validate-commits:
+          <<: *feature_filter
 
+  release-flow:
+    jobs:
+      - commitizen:
+          requires:
+            - validate-commits
+          <<: *release_filter
