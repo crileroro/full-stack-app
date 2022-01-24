@@ -11,7 +11,7 @@ This app is a test example aimed to show a full stack app which provides the ver
 These instructions will help you start the full-stack app.
 
 ### Prerequisites
-* Docker CE.
+* Docker.
 * Docker Compose.
 
 ### Installing
