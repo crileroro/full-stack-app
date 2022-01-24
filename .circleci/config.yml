@@ -85,11 +85,13 @@ workflows:
       - version-tag:
           <<: *feature_filter
       - commitlint/lint:
+          target-branch: master
           <<: *feature_filter
 
   release-flow:
     jobs:
       - commitlint/lint:
+          target-branch: master
           <<: *release_filter
       - commitizen:
           requires:
