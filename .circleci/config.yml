@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs:
+  commitlint: conventional-changelog/commitlint@1.0
 # Filters
 feature_filter: &feature_filter
   filters:
@@ -83,14 +84,14 @@ workflows:
     jobs:
       - version-tag:
           <<: *feature_filter
-      - validate-commits:
+      - commitlint/lint:
           <<: *feature_filter
 
   release-flow:
     jobs:
-      - validate-commits:
+      - commitlint/lint:
           <<: *release_filter
       - commitizen:
           requires:
-            - validate-commits
+            - commitlint/lint
           <<: *release_filter
