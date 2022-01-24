@@ -76,7 +76,7 @@ jobs:
       - run:
           name: Run Commitizen
           command: |
-            cz bump
+            cz bump --yes
              
 workflows:
   feature-flow:
