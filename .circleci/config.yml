@@ -1,5 +1,16 @@
 version: 2.1
 
+# Filters
+feature_filter: &feature_filter
+  filters:
+    branches:
+      ignore: master
+
+release_filter: &release_filter
+  filters:
+    branches:
+      only: master
+
 executors:
   alpine:
     docker: 
@@ -15,43 +26,58 @@ commands:
     parameters:
       myparameter:
         type: string
-        default: "crileroro"
+        default: "test"
     steps:
       - run: 
           name: Echoing message test
           command: echo "Hello <<parameters.myparameter>>"
 
 jobs:  
+  validate-commits:
+    docker:
+      - image: aevea/commitsar
+    steps:
+      - checkout
+      - run: commitsar
   version-tag:
     executor: alpine
     steps:
+      - test
       - run:
           name: test echo
           command: echo "This is the tag <<pipeline.parameters.tag>>"
-
-  default:
-    executor: alpine
+  commitizen:
+    docker:
+      - image: cimg/python:<<parameters.python_version>>
+    parameters:
+      python_version:
+        default: "3.10"
+        description: |
+          The python version used to run Commitizen.
+        type: string
+      resource_class:
+        default: small
+        type: string
+      commitizen_version:
+        default: "2.20.4"
+        description: |
+          Optional alternate commitizen version.
+        type: string
+    resource_class: <<parameters.resource_class>>
     steps:
-      - test
-      
-  job-1:
-    executor: alpine
-    steps:
-      - test: 
-          myparameter: "test-1"
-          
-  job-2:
-    executor: alpine
-    steps:
-      - test: 
-          myparameter: "test-2"
-  
-  job-3:
-    executor: alpine
-    steps:
-      - test: 
-          myparameter: "test-3"
-         
+      - checkout
+      - run:
+          name: Install Commitizen
+          command: |
+            PIP_INDEX_URL=https://pypi.org/simple
+            pip3 install --user Commitizen==<<parameters.commitizen_version>>
+            git config user.email "ci-integration@aaqua.live"
+            git config user.name "ci-integration"
+      - run:
+          name: Run Commitizen
+          command: |
+            cz bump
+             
 workflows:
   feature-flow:
     jobs:
