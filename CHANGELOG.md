@@ -1,3 +1,12 @@
+## 0.5.0 (2022-01-24)
+
+### Feat
+
+- Add filter
+- Add filter
+- Add new config
+- Add new config
+
 ## 0.4.0 (2022-01-24)
 
 ### Feat
