@@ -89,9 +89,5 @@ workflows:
 
   release-flow:
     jobs:
-      - validate-commits:
-          <<: *release_filter
       - commitizen:
-          requires:
-            - validate-commits
           <<: *release_filter
