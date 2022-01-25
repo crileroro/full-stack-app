@@ -1,3 +1,32 @@
+## 0.6.0 (2022-01-25)
+
+### Fix
+
+- Add yes flag
+- Add yes flag
+- remove commitsar on master
+- remove commitsar on master
+- change requires
+
+### Feat
+
+- Modify limits
+- Modify limits
+- Modify commitsar config
+- Modify commitsar config
+- Modify commitsar confog
+- Modify commitsar confog
+- Add all commits
+- Add all commits
+- Add all commits
+- Add all commits
+- add commitsar file
+- add config file
+- Add config file
+- Add config file
+- Change branch
+- Change linter
+
 ## 0.5.0 (2022-01-24)
 
 ### Feat
