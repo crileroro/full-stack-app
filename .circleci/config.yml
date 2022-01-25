@@ -109,4 +109,5 @@ workflows:
     jobs:
       - commitizen:
           <<: *release_filter
-      - build
+      - build:
+          <<: *release_filter
