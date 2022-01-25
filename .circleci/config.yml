@@ -78,7 +78,9 @@ jobs:
           name: Run Commitizen
           command: |
             cz bump --yes
-             
+            CURRENT_VERSION=$(cz version -p)
+            git push --set-upstream origin $CIRCLE_BRANCH
+            git push origin $CURRENT_VERSION
 workflows:
   feature-flow:
     jobs:
