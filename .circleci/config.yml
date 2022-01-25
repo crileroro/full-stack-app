@@ -82,6 +82,21 @@ jobs:
             CURRENT_VERSION=$(cz version -p)
             git push --set-upstream origin $CIRCLE_BRANCH
             git push origin $CURRENT_VERSION
+  build:
+    parameters:
+      python_version:
+        default: "3.10"
+        description: |
+          The python version used to run Commitizen.
+    docker:
+      - image: cimg/python:<<parameters.python_version>>
+    steps:
+      - run:
+          name: git push changes
+          command: |
+            git push --set-upstream origin $CIRCLE_BRANCH
+            git push origin $CURRENT_VERSION
+
 workflows:
   feature-flow:
     jobs:
@@ -94,3 +109,4 @@ workflows:
     jobs:
       - commitizen:
           <<: *release_filter
+      - build
