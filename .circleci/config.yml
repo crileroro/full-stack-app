@@ -93,5 +93,5 @@ workflows:
           <<: *release_filter
       - commitizen:
           requires:
-            - commitlint/lint
+            - validate-commits
           <<: *release_filter
