@@ -67,7 +67,6 @@ jobs:
     resource_class: <<parameters.resource_class>>
     steps:
       - checkout
-      - add_ssh_keys
       - run:
           name: Install Commitizen
           command: |
@@ -80,8 +79,6 @@ jobs:
           command: |
             cz bump --yes
             CURRENT_VERSION=$(cz version -p)
-            git push --set-upstream origin $CIRCLE_BRANCH
-            git push origin $CURRENT_VERSION
   build:
     parameters:
       python_version:
@@ -92,6 +89,8 @@ jobs:
     docker:
       - image: cimg/python:<<parameters.python_version>>
     steps:
+      - checkout
+      - add_ssh_keys
       - run:
           name: git push changes
           command: |
