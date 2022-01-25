@@ -118,6 +118,4 @@ workflows:
       - commitizen:
           <<: *release_filter
       - build:
-          requires:
-            - commitizen
           <<: *release_filter
