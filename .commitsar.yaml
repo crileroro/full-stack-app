@@ -1,5 +1,5 @@
 verbose: true
 commits:
   strict: false
-  limit: 2
-  all: true
+  limit: 5
+  all: false
