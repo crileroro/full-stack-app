@@ -84,14 +84,12 @@ workflows:
     jobs:
       - version-tag:
           <<: *feature_filter
-      - commitlint/lint:
-          target-branch: master
+      - validate-commits:
           <<: *feature_filter
 
   release-flow:
     jobs:
-      - commitlint/lint:
-          target-branch: master
+      - validate-commits:
           <<: *release_filter
       - commitizen:
           requires:
