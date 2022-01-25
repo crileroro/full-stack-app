@@ -1,3 +1,18 @@
+## 0.8.0 (2022-01-25)
+
+### Feat
+
+- **ci**: Change build
+- **ci**: Change build
+- **ci**: Change build
+- **ci**: Change build
+- **ci**: Change build
+- **ci**: Change build
+
+### Fix
+
+- **ci**: Change build
+
 ## 0.7.0 (2022-01-25)
 
 ### Feat
