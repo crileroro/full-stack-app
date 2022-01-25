@@ -79,6 +79,12 @@ jobs:
           command: |
             cz bump --yes
             CURRENT_VERSION=$(cz version -p)
+      - persist_to_workspace:
+          root: .
+          paths:
+            - ".cz.yaml"
+            - "VERSION"
+            - "CHANGELOG.md"
   build:
     parameters:
       python_version:
@@ -89,6 +95,8 @@ jobs:
     docker:
       - image: cimg/python:<<parameters.python_version>>
     steps:
+      - attach_workspace:
+                at: .
       - checkout
       - add_ssh_keys
       - run:
