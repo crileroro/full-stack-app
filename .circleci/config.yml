@@ -95,9 +95,9 @@ jobs:
     docker:
       - image: cimg/python:<<parameters.python_version>>
     steps:
-      - attach_workspace:
-                at: .
       - checkout
+      - attach_workspace:
+          at: .
       - add_ssh_keys
       - run:
           name: git push changes
