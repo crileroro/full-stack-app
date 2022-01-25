@@ -81,9 +81,7 @@ jobs:
       - persist_to_workspace:
           root: .
           paths:
-            - ".cz.yaml"
-            - "VERSION"
-            - "CHANGELOG.md"
+            - .
   build:
     parameters:
       python_version:
