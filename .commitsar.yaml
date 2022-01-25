@@ -1,0 +1,5 @@
+verbose: false
+commits:
+  strict: false
+  limit: 2
+  all: false

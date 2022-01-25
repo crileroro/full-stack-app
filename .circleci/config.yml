@@ -1,5 +1,6 @@
 version: 2.1
-
+orbs:
+  commitlint: conventional-changelog/commitlint@1.0
 # Filters
 feature_filter: &feature_filter
   filters:
@@ -76,7 +77,7 @@ jobs:
       - run:
           name: Run Commitizen
           command: |
-            cz bump --yes
+            cz bump
              
 workflows:
   feature-flow:
