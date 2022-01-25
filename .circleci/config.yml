@@ -67,6 +67,7 @@ jobs:
     resource_class: <<parameters.resource_class>>
     steps:
       - checkout
+      - add_ssh_keys
       - run:
           name: Install Commitizen
           command: |
