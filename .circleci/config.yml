@@ -101,7 +101,7 @@ jobs:
       - run:
           name: git push changes
           command: |
-            CURRENT_VERSION=$(cz version -p)
+            CURRENT_VERSION=$(yq e '.commitizen.version' .cz.yaml)
             git push --set-upstream origin $CIRCLE_BRANCH
             git push origin $CURRENT_VERSION
 
