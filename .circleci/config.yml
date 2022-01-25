@@ -78,7 +78,6 @@ jobs:
           name: Run Commitizen
           command: |
             cz bump --yes
-            CURRENT_VERSION=$(cz version -p)
       - persist_to_workspace:
           root: .
           paths:
@@ -102,6 +101,7 @@ jobs:
       - run:
           name: git push changes
           command: |
+            CURRENT_VERSION=$(cz version -p)
             git push --set-upstream origin $CIRCLE_BRANCH
             git push origin $CURRENT_VERSION
 
@@ -118,4 +118,6 @@ workflows:
       - commitizen:
           <<: *release_filter
       - build:
+          requires:
+            - commitizen
           <<: *release_filter
